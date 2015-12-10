@@ -34,6 +34,10 @@
             <input type="password" class="form-control" placeholder="Password" name="password"/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Authenticator" name="authenticator"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>        
         <div class="row">
             <div class="col-xs-8">
                 <div class="checkbox icheck">
@@ -47,7 +51,7 @@
             </div><!-- /.col -->
         </div>
     </form>
-
+    <!--
     <div class="social-auth-links text-center">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
@@ -55,7 +59,7 @@
     </div><!-- /.social-auth-links -->
 
     <a href="{{ url('/password/email') }}">I forgot my password</a><br>
-    <a href="{{ url('/auth/register') }}" class="text-center">Register a new membership</a>
+    <!-- <a href="{{ url('/auth/register') }}" class="text-center">Register a new membership</a> -->
 
 </div><!-- /.login-box-body -->
 

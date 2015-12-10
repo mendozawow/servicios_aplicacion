@@ -29,15 +29,15 @@ desired effect
 -->
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
-<!--
+{{--
     @include('partials.mainheader')
 
     @include('partials.sidebar')
--->
+--}}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-        <!-- @include('partials.contentheader') -->
+        {{-- @include('partials.contentheader') --}}
 
         <!-- Main content -->
         <section class="content">
@@ -46,11 +46,13 @@ desired effect
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
-   <!-- @include('partials.controlsidebar') -->
+   {{-- @include('partials.controlsidebar') --}}
 
 </div><!-- ./wrapper -->
 
-@include('partials.scripts')
-@yield('extra-scripts')
+{{--
+    @include('partials.scripts')
+    @yield('extra-scripts')
+--}}
 </body>
 </html>

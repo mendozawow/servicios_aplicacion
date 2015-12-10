@@ -5,8 +5,8 @@ use Auth;
 use App\Http\Requests\MailRequest;
 use App\Http\Controllers\Controller;
 
-use App\Mail;
 use App\Helper;
+use App\Mail;
 
 class MailController extends Controller {
     
@@ -56,8 +56,9 @@ class MailController extends Controller {
             $mail->home = '/var/spool/mail/virtual';
             $mail->maildir = $mail->name .'/';
             $mail->crypt = Helper::mysqlEncrypt($mail->crypt);
+            mail($mail->id, 'Welcome!', 'Welcome to your inbox!');
             $mail->save();
-            return response()->json(['success'=> 'true']);
+            return response()->json(['success'=> 'true', 'data'=>$mail]);
 	}
 
 	/**
@@ -92,14 +93,17 @@ class MailController extends Controller {
 	{
             $r=$request->all();
             $mail = Mail::find($id);
-            if ($request->input('name')){
+
+            if (!empty($request->input('name'))){
                 $domain = Auth::user()->domains->find($domainId);
-                $r['id'] = $request->input('name') . '@' . $domain->name;                
+                $r['name'] = $request->input('name');                
             }
-            if($request->input('crypt')){
+
+            if(!empty($request->input('crypt'))){
                 $r['crypt'] = Helper::mysqlEncrypt($r['crypt']);
-            }
+            } else { unset($r['crypt']); }
             $mail->update($r);
+
             return response()->json(['success'=> 'true']);      
 	}
 

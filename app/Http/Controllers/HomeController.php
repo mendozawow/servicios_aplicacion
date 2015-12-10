@@ -34,8 +34,10 @@ class HomeController extends Controller {
 	public function index()
 	{
             $user = Auth::user();
-            $data = $user->domains;
-            return view('ext')->with('domains',$data);
+            $roles = [];
+            foreach($user->roles as $role){
+                array_push($roles,$role->name);
+            }
+            return view('ext')->with('domains',$user->domains)->with('user_roles', $roles);
 	}
-
 }

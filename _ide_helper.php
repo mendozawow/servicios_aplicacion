@@ -1,7 +1,7 @@
 <?php
 /**
- * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.32 on 2015-06-23.
+ * A helper file for Laravel 5, to provide autocomplete information to your IDE
+ * Generated for Laravel 5.0.33 on 2015-07-01.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11600,6 +11600,211 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Google2FA extends \PragmaRX\Google2FA\Vendor\Laravel\Facade{
+        
+        /**
+         * Generate a digit secret key in base32 format.
+         *
+         * @param int $length
+         * @return string 
+         * @static 
+         */
+        public static function generateSecretKey($length = 16){
+            return \PragmaRX\Google2FA\Google2FA::generateSecretKey($length);
+        }
+        
+        /**
+         * Returns the current Unix Timestamp devided by the KEY_REGENERATION
+         * period.
+         *
+         * @return integer 
+         * @static 
+         */
+        public static function getTimestamp(){
+            return \PragmaRX\Google2FA\Google2FA::getTimestamp();
+        }
+        
+        /**
+         * Decodes a base32 string into a binary string.
+         *
+         * @param string $b32
+         * @throws InvalidCharactersException
+         * @return integer 
+         * @static 
+         */
+        public static function base32Decode($b32){
+            return \PragmaRX\Google2FA\Google2FA::base32Decode($b32);
+        }
+        
+        /**
+         * Takes the secret key and the timestamp and returns the one time
+         * password.
+         *
+         * @param string $key - Secret key in binary form.
+         * @param integer $counter - Timestamp as returned by getTimestamp.
+         * @throws SecretKeyTooShortException
+         * @return string 
+         * @static 
+         */
+        public static function oathHotp($key, $counter){
+            return \PragmaRX\Google2FA\Google2FA::oathHotp($key, $counter);
+        }
+        
+        /**
+         * Get the current one time password for a key.
+         *
+         * @param string $initalizationKey
+         * @return string 
+         * @throws InvalidCharactersException
+         * @throws SecretKeyTooShortException
+         * @static 
+         */
+        public static function getCurrentOtp($initalizationKey){
+            return \PragmaRX\Google2FA\Google2FA::getCurrentOtp($initalizationKey);
+        }
+        
+        /**
+         * Verifies a user inputted key against the current timestamp. Checks $window
+         * keys either side of the timestamp.
+         *
+         * @param string $b32seed
+         * @param string $key - User specified key
+         * @param integer $window
+         * @param boolean $useTimeStamp
+         * @return boolean 
+         * @static 
+         */
+        public static function verifyKey($b32seed, $key, $window = 4, $useTimeStamp = true){
+            return \PragmaRX\Google2FA\Google2FA::verifyKey($b32seed, $key, $window, $useTimeStamp);
+        }
+        
+        /**
+         * Extracts the OTP from the SHA1 hash.
+         *
+         * @param string $hash
+         * @return integer 
+         * @static 
+         */
+        public static function oathTruncate($hash){
+            return \PragmaRX\Google2FA\Google2FA::oathTruncate($hash);
+        }
+        
+        /**
+         * Remove invalid chars from a base 32 string.
+         *
+         * @param $string
+         * @return mixed 
+         * @static 
+         */
+        public static function removeInvalidChars($string){
+            return \PragmaRX\Google2FA\Google2FA::removeInvalidChars($string);
+        }
+        
+        /**
+         * Creates a Google QR code url.
+         *
+         * @param $company
+         * @param $holder
+         * @param $secret
+         * @return string 
+         * @static 
+         */
+        public static function getQRCodeGoogleUrl($company, $holder, $secret){
+            return \PragmaRX\Google2FA\Google2FA::getQRCodeGoogleUrl($company, $holder, $secret);
+        }
+        
+    }
+
+
+    class Entrust extends \Zizaco\Entrust\EntrustFacade{
+        
+        /**
+         * Checks if the current user has a role by its name
+         *
+         * @param string $name Role name.
+         * @return bool 
+         * @static 
+         */
+        public static function hasRole($role, $requireAll = false){
+            return \Zizaco\Entrust\Entrust::hasRole($role, $requireAll);
+        }
+        
+        /**
+         * Check if the current user has a permission by its name
+         *
+         * @param string $permission Permission string.
+         * @return bool 
+         * @static 
+         */
+        public static function can($permission, $requireAll = false){
+            return \Zizaco\Entrust\Entrust::can($permission, $requireAll);
+        }
+        
+        /**
+         * Get the currently authenticated user or null.
+         *
+         * @return \Zizaco\Entrust\Illuminate\Auth\UserInterface|null 
+         * @static 
+         */
+        public static function user(){
+            return \Zizaco\Entrust\Entrust::user();
+        }
+        
+        /**
+         * Filters a route for a role or set of roles.
+         * 
+         * If the third parameter is null then abort with status code 403.
+         * Otherwise the $result is returned.
+         *
+         * @param string $route Route pattern. i.e: "admin/*"
+         * @param array|string $roles The role(s) needed
+         * @param mixed $result i.e: Redirect::to('/')
+         * @param bool $requireAll User must have all roles
+         * @return mixed 
+         * @static 
+         */
+        public static function routeNeedsRole($route, $roles, $result = null, $requireAll = true){
+            return \Zizaco\Entrust\Entrust::routeNeedsRole($route, $roles, $result, $requireAll);
+        }
+        
+        /**
+         * Filters a route for a permission or set of permissions.
+         * 
+         * If the third parameter is null then abort with status code 403.
+         * Otherwise the $result is returned.
+         *
+         * @param string $route Route pattern. i.e: "admin/*"
+         * @param array|string $permissions The permission(s) needed
+         * @param mixed $result i.e: Redirect::to('/')
+         * @param bool $requireAll User must have all permissions
+         * @return mixed 
+         * @static 
+         */
+        public static function routeNeedsPermission($route, $permissions, $result = null, $requireAll = true){
+            return \Zizaco\Entrust\Entrust::routeNeedsPermission($route, $permissions, $result, $requireAll);
+        }
+        
+        /**
+         * Filters a route for role(s) and/or permission(s).
+         * 
+         * If the third parameter is null then abort with status code 403.
+         * Otherwise the $result is returned.
+         *
+         * @param string $route Route pattern. i.e: "admin/*"
+         * @param array|string $roles The role(s) needed
+         * @param array|string $permissions The permission(s) needed
+         * @param mixed $result i.e: Redirect::to('/')
+         * @param bool $requireAll User must have all roles and permissions
+         * @return void 
+         * @static 
+         */
+        public static function routeNeedsRoleOrPermission($route, $roles, $permissions, $result = null, $requireAll = false){
+            \Zizaco\Entrust\Entrust::routeNeedsRoleOrPermission($route, $roles, $permissions, $result, $requireAll);
         }
         
     }

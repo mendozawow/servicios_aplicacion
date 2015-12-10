@@ -4,6 +4,8 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
 
+use App\Helper;
+
 class RedirectIfAuthenticated {
 
 	/**
@@ -33,12 +35,10 @@ class RedirectIfAuthenticated {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->check())
+		if ($this->auth->check() && Helper::validateGoogleAuthenticator($this->auth->user(),$request))
 		{
-			return new RedirectResponse(url('/home'));
+                    return new RedirectResponse(url('/home'));
 		}
-
 		return $next($request);
 	}
-
 }

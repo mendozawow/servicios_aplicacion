@@ -28,7 +28,9 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "Acacha\\AdminLTETemplateLaravel\\app\\Providers\\AdminLTETemplateServiceProvider",
-        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
+        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider",
+        "PragmaRX\\Google2FA\\Vendor\\Laravel\\ServiceProvider",
+        "Zizaco\\Entrust\\EntrustServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -47,7 +49,8 @@
         "App\\Providers\\ConfigServiceProvider",
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
-        "Acacha\\AdminLTETemplateLaravel\\app\\Providers\\AdminLTETemplateServiceProvider"
+        "Acacha\\AdminLTETemplateLaravel\\app\\Providers\\AdminLTETemplateServiceProvider",
+        "Zizaco\\Entrust\\EntrustServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
@@ -127,7 +130,8 @@
         "translator": "Illuminate\\Translation\\TranslationServiceProvider",
         "translation.loader": "Illuminate\\Translation\\TranslationServiceProvider",
         "command.ide-helper.generate": "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider",
-        "command.ide-helper.models": "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
+        "command.ide-helper.models": "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider",
+        "PragmaRX\\Google2FA\\Contracts\\Google2FA": "PragmaRX\\Google2FA\\Vendor\\Laravel\\ServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [],
@@ -141,6 +145,7 @@
         "Illuminate\\Redis\\RedisServiceProvider": [],
         "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider": [],
         "Illuminate\\Translation\\TranslationServiceProvider": [],
-        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider": []
+        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider": [],
+        "PragmaRX\\Google2FA\\Vendor\\Laravel\\ServiceProvider": []
     }
 }

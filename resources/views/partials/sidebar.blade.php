@@ -10,7 +10,7 @@
                 <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p>{{ Auth::user()->name }}</p>
+                <p>Username</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -34,14 +34,7 @@
             <!-- Optionally, you can add icons to the links 
             {{ $first = true }}
             -->
-            @foreach ($domains as $domain)
-                @if ($first)
-                    {{ $first = false }}
-                    <li class="active" data-id='{{ $domain->id }}'><a href='#'><i class='fa fa-link'></i> <span>{{ $domain->name }}</span></a></li>
-                @else
-                    <li data-id='{{ $domain->id }}'><a href='#{{ $domain->id }}'><i class='fa fa-link'></i> <span>{{ $domain->name }}</span></a></li>
-                @endif
-            @endforeach
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

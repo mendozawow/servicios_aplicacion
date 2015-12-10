@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://macher.com.ar',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -146,9 +146,13 @@ return [
 		'App\Providers\RouteServiceProvider',
 
 		// AdminLTE template provider
-		 'Acacha\AdminLTETemplateLaravel\app\Providers\AdminLTETemplateServiceProvider',
+		'Acacha\AdminLTETemplateLaravel\app\Providers\AdminLTETemplateServiceProvider',
 
-		 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+		# Google 2-Factor Authentication
+		'PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider',
+		# Roles
+		'Zizaco\Entrust\EntrustServiceProvider'
 	],
 
 	/*
@@ -196,6 +200,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
+		'Entrust'	=> 'Zizaco\Entrust\EntrustFacade'
 
 	],
 

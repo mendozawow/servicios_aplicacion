@@ -15,7 +15,12 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-//Route::get('domains/get_domains',  'DomainController@getDomains');
+Route::get('processes/cpu', 'ProcessController@getCpuUsage');
+
+Route::get('users/genGAqr', 'UserController@generateAuthenticatorKey');
+Route::get('users/consoleKey', 'UserController@getConsoleApiKey');
+
+Route::resource('users', 'UserController');
 
 Route::resource('domains', 'DomainController');
 
@@ -26,6 +31,8 @@ Route::resource('domains.mails', 'MailController');
 Route::resource('domains.records', 'RecordController');
 
 Route::resource('domains.ftpusers', 'FtpUserController');
+
+Route::resource('processes', 'ProcessController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

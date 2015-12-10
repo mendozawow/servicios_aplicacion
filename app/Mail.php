@@ -6,7 +6,7 @@ class Mail extends Model {
 
     protected $table = 'postfix_users';
     protected $fillable = ['id', 'name', 'enabled', 'crypt', 'quota'];
-    protected $hidden = ['uid','gid','uid','home','maildir','clear','crypt','change_password'];
+    protected $hidden = ['uid','gid','home','maildir','clear','crypt','change_password'];
     public $timestamps = false;
     
     public function domain(){

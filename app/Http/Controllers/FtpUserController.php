@@ -50,7 +50,7 @@ class FtpUserController extends Controller {
             $ftpuser->name = $domain->name;
             $ftpuser->pass = Helper::mysqlPassword($ftpuser->pass);
             $ftpuser->save();
-            return response()->json(['success'=> 'true']);
+            return response()->json(['success'=> 'true', 'data'=>$ftpuser]);
 	}
 
 	/**

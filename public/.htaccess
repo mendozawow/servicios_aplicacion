@@ -1,3 +1,6 @@
+Order deny,allow
+allow from all
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
@@ -14,7 +17,8 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    RewriteCond %{HTTPS} !on
-    RewriteCond %{REQUEST_URI} ^(.*)$
-    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+# Force SSL
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
+

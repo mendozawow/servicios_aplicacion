@@ -25,7 +25,7 @@ class VhostController extends Controller {
             $domain = Auth::user()->domains->find($domainId);
             $vhosts = $domain->vhosts;
             foreach($vhosts as $v){
-                $v->documentroot = str_replace($v->documentRootPath(),'',$v->documentroot);
+                $v->documentRoot = str_replace($v->documentRootPath(),'',$v->documentRoot);
             }
             return response()->json(['success'=> 'true' , 'data'=>$vhosts]);
 	}
@@ -49,9 +49,9 @@ class VhostController extends Controller {
 	{
             $vhost = new Vhost($request->all());
             $vhost->domain_id = $domainId;
-            $vhost->documentroot = $vhost->documentRootPath() . $vhost->documentroot;
+            $vhost->documentRoot = $vhost->generateDocumentRoot($vhost->documentRoot);
             $vhost->save();
-            return response()->json(['success'=> 'true']);
+            return response()->json(['success'=> 'true', 'data'=>$vhost]);
 	}
 
 	/**
@@ -86,6 +86,10 @@ class VhostController extends Controller {
 	{
             $r=$request->all();
             $vhost = Vhost::find($id);
+            if($r['documentRoot']){
+                
+                $r['documentRoot'] = $vhost->generateDocumentRoot($r['documentRoot']);
+            }
             $vhost->update($r);
             return response()->json(['success'=> 'true']);      
 	}

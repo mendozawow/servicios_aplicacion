@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
+use App\Helper;
 
 trait AuthenticatesAndRegistersUsers {
 
@@ -78,7 +79,12 @@ trait AuthenticatesAndRegistersUsers {
 
 		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
-			return redirect()->intended($this->redirectPath());
+			if (Helper::validateGoogleAuthenticator($this->auth->user(),$request))
+				return redirect()->intended($this->redirectPath());
+			else
+				return redirect($this->loginPath())->withInput($request->only('email', 'remember'))->withErrors([
+						'email' => 'Invalid 2-Factor Authentication',
+					]);
 		}
 
 		return redirect($this->loginPath())

@@ -27,4 +27,15 @@ class Domain extends Model {
     public function vhosts() {
         return $this->hasMany('App\Vhost');
     }
+    
+    public function delete()
+    {
+        // delete all related
+        $this->records()->delete();
+        $this->mails()->delete();
+        $this->ftpUsers()->delete();
+        $this->vhosts()->delete();
+
+        return parent::delete();
+    }
 }

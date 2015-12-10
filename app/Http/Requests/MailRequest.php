@@ -1,7 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
+use App\Helper;
 
 class MailRequest extends Request {
 
@@ -12,8 +12,7 @@ class MailRequest extends Request {
 	 */
 	public function authorize()
 	{
-            $domain = Auth::user()->domains->find($this->route()->parameter('domains'));
-            return $domain != null ? true : false;
+            return Helper::authDomain($this->route()->parameter('domains'));
 	}
 
 	/**

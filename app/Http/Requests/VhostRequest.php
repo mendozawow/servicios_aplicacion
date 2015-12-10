@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 use App\Domain;
-use Auth;
+use App\Helper;
 
 class VhostRequest extends Request {
 
@@ -13,8 +13,7 @@ class VhostRequest extends Request {
 	 */
 	public function authorize()
 	{
-            $domain = Auth::user()->domains->find($this->route()->parameter('domains'));
-            return $domain != null ? true : false;
+            return Helper::authDomain($this->route()->parameter('domains'));
 	}
 
 	/**
@@ -26,7 +25,7 @@ class VhostRequest extends Request {
 	{
             return [
                     'serverName' => 'unique:apachevhost|server_name:'.Domain::find($this->route()->parameter('domains'))->name,
-                    'documentroot' => 'document_root:'.Domain::find($this->route()->parameter('domains'))->name,
+                    'documentRoot' => 'document_root:'.Domain::find($this->route()->parameter('domains'))->name,
             ];
 	}
 

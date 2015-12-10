@@ -43,7 +43,7 @@ class RecordController extends Controller {
             $record = new Record($request->all());
             $record->domain_id = $domainId;
             $record->save();
-            return response()->json(['success'=> 'true']);
+            return response()->json(['success'=> 'true', 'data'=>$record]);
 	}
 
 	/**
