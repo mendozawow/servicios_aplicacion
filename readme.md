@@ -8,13 +8,13 @@ To increase its security the app was secured with double authentication using Go
 ## Dependencies
 
 The panel was built to work with the following software:
-**Apache 2 web server with MySQL support for virtual hosts**
-**MySQL**
-**Postfix configured with MySQL support**
-**PowerDNS**
-**GateOne**
-**Courier IMAP**
-**VSFTPD**
+* **Apache 2 web server with MySQL support for virtual hosts**
+* **MySQL**
+* **Postfix configured with MySQL support**
+* **PowerDNS**
+* **GateOne**
+* **Courier IMAP**
+* **VSFTPD**
 
 ## Official Documentation
 
